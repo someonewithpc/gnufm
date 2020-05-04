@@ -259,10 +259,12 @@ class Server {
 
 		$result = array();
 
-		foreach ($data as &$i) {
-			$row = sanitize($i);
-			$row['artisturl'] = Server::getArtistURL($row['artist']);
-			$result[] = $row;
+		if (!empty($data)) {
+			foreach ($data as &$i) {
+				$row = sanitize($i);
+				$row['artisturl'] = Server::getArtistURL($row['artist']);
+				$result[] = $row;
+			}
 		}
 
 		return $result;
